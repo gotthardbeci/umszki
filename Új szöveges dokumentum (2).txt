@@ -1,0 +1,55 @@
+using System;
+
+
+
+    class Program
+    {
+      static void vonal (string szoveg)
+      {
+          for (int i = 0; i < szoveg.Length; i++)
+			{
+                if (szoveg[i] != ' ') Console.Write("-");
+                else Console.Write(" ");
+
+			}
+          Console.WriteLine();
+      }
+    
+        static void Main()
+        {
+            string szoveg = "Zuhany Kabin";
+            char[] arnyek = new char[szoveg.Length];
+            bool vege;
+            for (int i = 0; i < arnyek.Length; i++)
+            {
+                if(szoveg[i]!=' ') arnyek[i] = '-';
+            }
+            
+            
+            vonal(szoveg);
+
+
+            do
+            {
+                Console.WriteLine("Kérek egy betût!");
+                char betu = Convert.ToChar(Console.ReadLine());
+
+                for (int i = 0; i < szoveg.Length; i++)
+                {
+                    if (szoveg[i] == betu) arnyek[i] = betu;
+                    Console.Write(arnyek[i]);
+                }
+
+                 vege = true;
+                for (int i = 0; i < szoveg.Length; i++)
+                {
+                    if (szoveg[i] != arnyek[i]) vege = false;
+                }
+
+                Console.WriteLine(); 
+            } while (vege==false);
+            Console.WriteLine("\nGrat Mó!");
+            Console.ReadKey();
+
+        }
+    }
