@@ -1,0 +1,46 @@
+using System;
+using System.IO;
+
+namespace ConsoleApplication3
+{
+    class Program
+    {
+        static void Main()
+        {
+            //fájl megnyitása
+            StreamReader fajl = new StreamReader(@"c:\users\tanuló\desktop\osztalyatlag2.txt");
+            
+            //fájl beolvasása
+            
+            Console.WriteLine(fajl.ReadLine());
+            string nev;
+            int szam;
+            int elemszam = 0;
+            int osszeg = 0;
+            string[] nevek = new string[100];
+            int[] osztalyzat = new int[100];
+
+            while(!fajl.EndOfStream)
+            {
+               
+              string sor = fajl.ReadLine();
+              string [] darab=sor.Split('\t');
+              //elemszam++;
+              //osszeg += Convert.ToInt32(darab[1]);
+              nevek[elemszam] = darab[0];
+              osztalyzat[elemszam] = Convert.ToInt32(darab[1]);
+              elemszam++;
+
+            }
+            fajl.Close();
+            for (int i = 0; i < elemszam; i++)
+            {
+                osszeg += osztalyzat[i];
+            }
+
+
+            Console.WriteLine("Az osztályátlag: {0}", (double)osszeg/elemszam );
+            Console.ReadKey();
+        }
+    }
+}
